@@ -1,0 +1,52 @@
+{%load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%if title%}
+    <title>{{ title }}</title>
+    {%else%}
+    <title>Twitter</title>
+    {%endif%}
+    <link rel="stylesheet" href="{%static 'accounts/assets/css/boostrap.css'%}" type="text/css" />
+    <style>
+        body{
+            background: #fdfdfd;
+        }
+        h1,h2,h3,h4,h5{
+            color:black;
+            
+            }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 ">
+                {%include 'accounts/navbar.html'%}
+                {%if messages%}
+                {% for message in messages%}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor%}
+                {% endif%}
+                {% block content%}
+                
+
+                {% endblock%}
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="{%static 'accounts/assets/js/react.js'%}"></script>
+    <script type="text/javascript" src="{%static 'accounts/assets/js/react-dom.js'%}"></script>
+    <script type="text/javascript" src="{%static 'accounts/assets/js/babel.js'%}"></script>
+
+    {% block script %}
+    {%endblock script%}
+</body>
+</html>

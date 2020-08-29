@@ -1,0 +1,37 @@
+.disabled{
+    pointer-events: none;
+}
+.svgs{
+    width:15px;
+    height:15px;
+}
+#tweet{
+    resize: none;
+    width: 100%;
+    margin-top: 20px;
+    height: 85px;
+    border: 2px solid #e0d6d6;
+    border-radius: 20px;
+    padding: 10px;
+}
+.follow_button{
+    height: 22px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-left: 6px;
+    margin-top: 3px;
+    padding-top: 1px 
+
+}
+.tweetlists{
+    padding: 10px;
+    margin-top:6px;
+    padding-bottom: 30px;
+    background:#dedede;
+    border-radius: 20px;
+}
+.tweetlists:hover{
+    background: #f3f1f1;
+    cursor:pointer;
+}

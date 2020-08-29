@@ -1,0 +1,76 @@
+{%extends 'accounts/index.html'%}
+{%load static %}
+    
+    {%block content%}
+    <div id="app"><h1 style="position: absolute;top:150%;right:45%">Loading ...</h1></div>
+    {%endblock content%}
+
+    {%block script%}
+
+    <script type="text/babel">
+    class App extends React.Component{
+        constructor(props){
+                super(props)
+                this.state ={
+                    username:'',
+                    password:'',
+                    
+                }
+                
+            }
+            handleChange =e=>{
+                this.setState({
+                    [e.target.id]:e.target.value
+                })
+            }
+            errorHandler = (event,erromessage)=>{
+                this.setState({
+                        error:erromessage
+                    });
+                event.preventDefault();
+                window.scrollTo(10,10)
+
+            }
+            handleSubmit =e =>{
+                if(this.state.password =='' || this.state.username == ''){
+                    this.errorHandler(e,'Please Fill in all the fields')
+                    
+                }else{
+                    if(this.state.password.length < 6){
+                        this.errorHandler(e,'Please ensure your password and confirmation are longer than 6 characters');
+
+                    }
+                }
+
+            }
+        render(){ 
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <div className="card p-5 mt-3">
+                                <form action="/login/" onSubmit={this.handleSubmit} method="post" className="form-horizontal">
+                                    <p className="text-center text-danger">{this.state.error}</p>
+                                    <div className="form-group">
+                                        <label>Username<b>*</b></label>
+                                        <input type="text" name="username" id="username" onChange={this.handleChange} value={this.state.username} className="form-control" autoComplete autoFocus/>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Password<b>*</b></label>
+                                        <input type="password" name="password" id="password" onChange={this.handleChange} value={this.state.password} className="form-control" autoComplete/>
+                                    </div>
+                                    <input type="submit" className="btn btn-primary" value="Login"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            )
+        }
+    }
+    ReactDOM.render(<App />,document.getElementById('app'))
+    </script>
+    
+    {%endblock script%}
